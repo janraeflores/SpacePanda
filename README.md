@@ -5,7 +5,7 @@ SpacePanda is a simple 2D scroller where a hungry panda floats across space. Sin
 The goal is simple, to float across space to the end line. Of course, while dodging all the obstacles. You may control the panda by using your keyboard arrow inputs (Up, Down, Left, and Right) to dodge and maneouver across space. The game is finished when the panda reaches the other end. 
 
 # How to Build and Run
-To build and run SpacePanada, you will need Go 1.20, and Git installed on your device.
+To build and run SpacePanada, you will need Go 1.20.XX and Git installed on your device.
 - If required, install Go 1.20: https://go.dev/dl/
 - If required, install Git: https://git-scm.com/downloads
 
