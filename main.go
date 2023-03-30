@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/ebitenutil"
 )
@@ -119,10 +117,6 @@ func (g *Game) Draw(screen *ebiten.Image) {
 		op.GeoM.Translate(obstacle.X-g.ScrollX, obstacle.Y)
 		screen.DrawImage(obstacle.Image, op)
 	}
-
-	// Draw player coordinates
-	msg := "Player X: " + fmt.Sprintf("%.2f", g.PlayerX) + "\nPlayer Y: " + fmt.Sprintf("%.2f", g.PlayerY)
-	ebitenutil.DebugPrint(screen, msg)
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {
