@@ -20,9 +20,9 @@ type Game struct {
 }
 
 type Obstacle struct {
-	Image *ebiten.Image
-	X     float64
-	Y     float64
+	ObstacleImage *ebiten.Image
+	X             float64
+	Y             float64
 }
 
 var obstacles []Obstacle
@@ -40,10 +40,10 @@ func createObstacles() {
 		panic(err)
 	}
 	obstacles = []Obstacle{
-		{Image: obstacle, X: 1000, Y: -120},
-		{Image: obstacle, X: 2000, Y: 400},
-		{Image: obstacle, X: 3000, Y: 500},
-		{Image: obstacle, X: 3700, Y: 100},
+		{ObstacleImage: obstacle, X: 1000, Y: -120},
+		{ObstacleImage: obstacle, X: 2000, Y: 400},
+		{ObstacleImage: obstacle, X: 3000, Y: 500},
+		{ObstacleImage: obstacle, X: 3700, Y: 100},
 	}
 }
 
@@ -84,8 +84,8 @@ func (g *Game) Update(screen *ebiten.Image) error {
 
 	// Check for collision with obstacles
 	for _, obstacle := range obstacles {
-		if g.PlayerX+float64(g.PlayerImage.Bounds().Max.X) > obstacle.X && g.PlayerX < obstacle.X+float64(obstacle.Image.Bounds().Max.X) &&
-			g.PlayerY+float64(g.PlayerImage.Bounds().Max.Y) > obstacle.Y && g.PlayerY < obstacle.Y+float64(obstacle.Image.Bounds().Max.Y) {
+		if g.PlayerX+float64(g.PlayerImage.Bounds().Max.X) > obstacle.X && g.PlayerX < obstacle.X+float64(obstacle.ObstacleImage.Bounds().Max.X) &&
+			g.PlayerY+float64(g.PlayerImage.Bounds().Max.Y) > obstacle.Y && g.PlayerY < obstacle.Y+float64(obstacle.ObstacleImage.Bounds().Max.Y) {
 
 			// If player collides with obstacle, game restarts
 			g.PlayerX = screenWidth / 2
@@ -115,7 +115,7 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	for _, obstacle := range obstacles {
 		op = &ebiten.DrawImageOptions{}
 		op.GeoM.Translate(obstacle.X-g.ScrollX, obstacle.Y)
-		screen.DrawImage(obstacle.Image, op)
+		screen.DrawImage(obstacle.ObstacleImage, op)
 	}
 }
 
